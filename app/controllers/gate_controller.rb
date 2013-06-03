@@ -1,5 +1,8 @@
 class GateController < ApplicationController
   def index
-    @goals = User.find(1).goals.all
+    begin
+      @goals = User.find(1).goals.all
+    rescue
+    end
   end
 end

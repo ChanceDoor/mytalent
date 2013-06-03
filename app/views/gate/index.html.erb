@@ -1,3 +1,4 @@
+<%if @goals%>
 <div>
 <% @goals.each do |goal| %>
   <div style="font-weight:bold"><%= goal.title%></div>
@@ -6,3 +7,4 @@
   <div><%= goal.end_time%></div>
 <% end %>
 </div>
+<%end%>
