@@ -34,7 +34,12 @@ class GoalsController < ApplicationController
     end
 
   end
-  def delete
-
+  def destroy
+    @user = current_user
+    @goal = @user.goals.find(params[:id])
+    @goal.destroy
+    respond_to do |format|
+        format.html {redirect_to root_path,notice:'Goal was deleted.'}
+    end
   end
 end

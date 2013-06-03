@@ -1,1 +1,5 @@
 <%=render "goals/form" %>
+
+<%=link_to "Delete",[@user,@goal],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
