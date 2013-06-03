@@ -1,4 +1,11 @@
 <h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+  <p>User: <%=link_to @user.name, @user %></p>
+  <p>Goal:</p>
+  <% @goals.each do |goal|%>
+    <div style="font-weight:bold"><%= goal.title%></div>
+    <div><%= goal.description%></div>
+    <div><%= goal.start_time%></div>
+    <div><%= goal.end_time%></div>
+    <div><%= link_to "Edit",edit_user_goal_path(goal.user_id,goal)%></div><br>
+  <% end %>
+  <%= link_to "New Goal",new_user_goal_path(@user)%>

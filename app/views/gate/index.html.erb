@@ -1,0 +1,8 @@
+<div>
+<% @goals.each do |goal| %>
+  <div style="font-weight:bold"><%= goal.title%></div>
+  <div><%= goal.description%></div>
+  <div><%= goal.start_time%></div>
+  <div><%= goal.end_time%></div>
+<% end %>
+</div>
