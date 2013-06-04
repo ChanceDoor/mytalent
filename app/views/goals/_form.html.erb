@@ -1,25 +1,29 @@
 <%= form_for([@user,@goal]) do |f| %>
   <div class="field" style="width:220px">
-    <%= f.label :title %>
+    <%= f.label "标题" %>
     <%= f.text_field :title %>
   </div>
   <div class="field" style="width:220px">
-    <%= f.label :description %>
+    <%= f.label "内容描述" %>
     <%= f.text_area :description,:rows=>"10"%>
   </div>
   <div class="field" style="width:220px">
-    <%= f.label :start_time %>
-    <%= f.text_field :start_time%>
+    <%= f.label "开始于" %>
+    <%= datetime_select("goal", "start_time",{:use_month_numbers => true,:discard_hour => true},{:style => 'width:70px'})%>
   </div>
   <div class="field" style="width:220px">
-    <%= f.label :end_time %>
-    <%= f.text_field :end_time%>
+    <%= f.label "结束于" %>
+    <%= datetime_select("goal", "end_time",{:use_month_numbers => true,:discard_hour =>true,:default => 3.days.from_now},{:style=>'width:70px'})%>
   </div>
   <div class="field" style="width:220px">
-    <%= f.label :weight %>
-    <%= f.text_field :weight%>
+    <%= f.label "优先级" %>
+    <%= select("goal","weight",[['高',2],['中',1],['低',0]])%>
+  </div>
+  <div class="field" style="width:220px">
+    <%= f.label "状态" %>
+    <%= select("goal","status",[['进行中',0],['已完成',1],['未达标',2],['中止',3]])%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "提交"%>
   </div>
 <% end %>
