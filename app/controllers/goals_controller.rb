@@ -1,3 +1,4 @@
+#encoding:utf-8
 class GoalsController < ApplicationController
   before_filter :authenticate_user!
   def create
