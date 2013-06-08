@@ -16,6 +16,10 @@
     <%= datetime_select("goal", "end_time",{:use_month_numbers => true,:discard_hour =>true,:default => 3.days.from_now},{:style=>'width:70px'})%>
   </div>
   <div class="field" style="width:220px">
+    <%= f.label "父节点" %>
+    <%= f.select(:father,@goals,:selected => @goal.father)%>
+  </div>
+  <div class="field" style="width:220px">
     <%= f.label "优先级" %>
     <%= select("goal","weight",[['高',2],['中',1],['低',0]])%>
   </div>

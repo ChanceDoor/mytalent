@@ -16,11 +16,17 @@ class GoalsController < ApplicationController
   def new
     @user = current_user
     @goal = @user.goals.new
+    goals = @user.goals.find_all_by_status('0')
+    @goals = [["无",0]]
+    goals.each{|x| if x.id != @goal.id then @goals.push([x.title,x.id]) end}
   end
 
   def edit
     @user = current_user
     @goal = @user.goals.find(params[:id])
+    goals = @user.goals.find_all_by_status('0')
+    @goals = [["无",0]]
+    goals.each{|x| if x.id != @goal.id then @goals.push([x.title,x.id]) end}
   end
   
   def update
