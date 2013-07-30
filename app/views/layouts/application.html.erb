@@ -13,7 +13,11 @@
     <div class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
         <div class="container">
-          <%= render 'layouts/navigation' %>
+          <%if controller_name == 'gate'%>
+          <%= render 'layouts/navigation1' %>
+          <%else%>
+          <%= render 'layouts/navigation2' %>
+          <%end%>
         </div>
       </nav>
     </div>
@@ -27,6 +31,9 @@
             </div>
           </div>
           <footer>
+            <div>关于我们 | 联系我们 | 业务合作  </div>
+            <div>浙ICP备11041017号-2</div>
+            <div><a href="http://www.miitbeian.gov.cn/">http://www.miitbeian.gov.cn/</a></div>
           </footer>
         </div>
       </div> <!--! end of .container -->

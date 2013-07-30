@@ -1,6 +1,7 @@
-<h2><span class="logo">myTalent</span></h2>
+<div class="center">
+<h2><span>我们的征途是星辰大海</span></h2>
 <%if @goals%>
-  <div>
+  <div style="width:200px">
   <% @fathers.each do |father|%>
     <div class="tip">
     <%per = (Time.now-father.start_time).to_f/(father.end_time-father.start_time).to_f%>
@@ -19,23 +20,23 @@
         <% when '0' %>
         <span style="color:blue">进行中</span>
         </div>
-        <div class="process_bar"><div style="background:red;width:<%= per>1 ? 200 : per*200%>px;height:20px"><div id="father_per" style="background:#D1EEEE;width:<%= count==0 ? 0 : (complete.to_f/count.to_f)*200 %>px;height:20px"><%= count==0 ? 0 : (format("%.2f",complete).to_f/format("%.2f",count).to_f)*100 %>%</div></div></div>
+        <div class="process_bar"><div style="background:red;width:<%= per>1 ? 400 : per*400%>px;height:20px"><div id="father_per" style="background:#59F378;width:<%= count==0 ? 0 : (complete.to_f/count.to_f)*400 %>px;height:20px">&nbsp&nbsp<%= count==0 ? 0 : (format("%.2f",complete).to_f/format("%.2f",count).to_f)*200 %>%</div></div></div>
         <% when '1' %>
-        <span style="color:green">已完成</span>
+        <span style="color:#59F378;">已完成</span>
         </div>
-        <div style="border-radius:4px;background:white;height:20px;width:200px"><div style="border-radius:4px;background:green;width:200px;height:20px"><div></div></div></div>
+        <div class="process_bar"><div class="complete_bar" style="background:#59F378;;"><div></div></div></div>
         <% when '2' %>
         <span style="color:red">未达标</span>
         </div>
-        <div style="border-radius:4px;background:white;height:20px;width:200px"><div style="border-radius:4px;background:red;width:200px;height:20px"><div></div></div></div>
+        <div class="process_bar"><div class="complete_bar" style="background:red;"><div></div></div></div>
         <% when '3' %>
-        <span style="color:gray">中止</span>
+        <span style="color:#CECECE">中止</span>
         </div>
-        <div style="border-radius:4px;background:white;height:20px;width:200px"><div style="border-radius:4px;background:gray;width:200px;height:20px"><div></div></div></div>
+        <div class="process_bar"><div class="complete_bar" style="background:#CECECE;"><div></div></div></div>
         <% else %>
       <% end %>
-    <div><%= father.start_time.strftime("%Y-%m-%d")%></div>
-    <div><%= father.end_time.strftime("%Y-%m-%d")%></div>
+    <div style="display:none"><%= father.start_time.strftime("%Y-%m-%d")%></div>
+    <div style="display:none"><%= father.end_time.strftime("%Y-%m-%d")%></div>
     <div><%= father.description%></div>
     <% @goals.each do |goal|%>
     <% if goal.father == father.id %>
@@ -45,23 +46,23 @@
           <% when '0' %>
             <span style="color:blue">进行中</span>
             </div>
-            <div style="border-radius:4px;background:white;height:20px;width:200px"><div style="border-radius:4px;background:red;width:<%= per>1 ? 200 : per*200%>px;height:20px"><div></div></div></div>
+            <div class="process_bar"><div style="border-radius:8px;background:red;width:<%= per>1 ? 400 : per*400%>px;height:20px"><div></div></div></div>
           <% when '1' %>
-            <span style="color:green">已完成</span>
+            <span style="color:#59F378;">已完成</span>
             </div>
-            <div style="border-radius:4px;background:white;height:20px;width:200px"><div style="border-radius:4px;background:green;width:200px;height:20px"><div></div></div></div>
+            <div class="process_bar"><div class="complete_bar" style="background:#59F378;"><div></div></div></div>
           <% when '2' %>
             <span style="color:red">未达标</span>
             </div>
-            <div style="border-radius:4px;background:white;height:20px;width:200px"><div style="border-radius:4px;background:red;width:200px;height:20px"><div></div></div></div>
+            <div class="process_bar"><div class="complete_bar" style="background:red;"><div></div></div></div>
           <% when '3' %>
-            <span style="color:gray">中止</span>
+            <span style="color:#CECECE;">中止</span>
             </div>
-            <div style="border-radius:4px;background:white;height:20px;width:200px"><div style="border-radius:4px;background:gray;width:200px;height:20px"><div></div></div></div>
+            <div class="process_bar"><div class="complete_bar" style="background:#CECECE;"><div></div></div></div>
           <% else %>
         <% end %>
-        <div><%= goal.start_time.strftime("%Y-%m-%d")%></div>
-        <div><%= goal.end_time.strftime("%Y-%m-%d")%></div>
+        <div style="display:none"><%= goal.start_time.strftime("%Y-%m-%d")%></div>
+        <div style="display:none"><%= goal.end_time.strftime("%Y-%m-%d")%></div>
         <div><%= goal.description%></div>
       <%end%>
     <%end%>
@@ -70,3 +71,9 @@
   <% end %>
   </div>
 <%end%>
+  <div class="donate">
+    <h4><span>由于目前网站还未盈利,日常维护支出虽然不多,但也是一份压力,如果您希望帮助我们加快进度,请资助我们吧!</span></h4>
+    <button onclick="window.open('http://me.alipay.com/chancedoor')">捐赠我们</button>
+  </div>
+</div>
+

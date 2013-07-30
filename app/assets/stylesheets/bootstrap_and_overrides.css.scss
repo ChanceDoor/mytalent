@@ -5,10 +5,27 @@ body { padding-top: 60px; }
   -webkit-border-radius:6px;
   -moz-border-radius: 6px;
   border-radius:6px;
+  background-color:white;
 }
 
 #main{
   height:1000px;
   padding-top:50px;
   margin-top: -20px;
+}
+.navbar .nav{
+  float:right;
+}
+
+.navbar .nav li{
+  margin-top: 8px;
+  border-radius: 6px;
+  border: 1px solid #b0a5c7;
+  line-height: 10px;
+  margin-left:5px;
+}
+
+footer{
+  margin-bootom:0px;
+  text-align:center;
 }
