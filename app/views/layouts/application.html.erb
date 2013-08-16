@@ -13,15 +13,11 @@
     <div class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
         <div class="container">
-          <%if controller_name == 'gate'%>
           <%= render 'layouts/navigation1' %>
-          <%else%>
-          <%= render 'layouts/navigation2' %>
-          <%end%>
         </div>
       </nav>
     </div>
-    <div id="main" role="main" style="background:url(<%= image_path "bg_moon.jpg"%>)">
+    <div id="main" role="main">
       <div class="container">
         <div class="content">
            <div class="row">

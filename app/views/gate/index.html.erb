@@ -16,53 +16,57 @@
       <%end%>
     <% end %>
     <div class="father"><%= father.title%>&nbsp&nbsp
+    <div class="time">
+      <div>起始时间:<%=father.start_time.strftime("%Y-%m-%d")%></div>
+      <div>结束时间:<%=father.end_time.strftime("%Y-%m-%d")%></div>
+    </div>
       <% case father.status%>
         <% when '0' %>
         <span style="color:blue">进行中</span>
         </div>
-        <div class="process_bar"><div style="background:red;width:<%= per>1 ? 400 : per*400%>px;height:20px"><div id="father_per" style="background:#59F378;width:<%= count==0 ? 0 : (complete.to_f/count.to_f)*400 %>px;height:20px">&nbsp&nbsp<%= count==0 ? 0 : (format("%.2f",complete).to_f/format("%.2f",count).to_f)*200 %>%</div></div></div>
+        <div class="progress progress-striped active"><div class="bar bar-danger" style="width:<%= per>1 ? 100 : per*100%>%;"><div id="father_per" class="bar" style="width:<%= count==0 ? 0 : (complete.to_f/count.to_f)*100 %>%;">&nbsp&nbsp<%= count==0 ? 0 : (format("%.2f",complete).to_f/format("%.2f",count).to_f)*100 %>%</div></div></div>
         <% when '1' %>
         <span style="color:#59F378;">已完成</span>
         </div>
-        <div class="process_bar"><div class="complete_bar" style="background:#59F378;;"><div></div></div></div>
+        <div class="progress"><div class="bar bar-success complete_bar"><div></div></div></div>
         <% when '2' %>
         <span style="color:red">未达标</span>
         </div>
-        <div class="process_bar"><div class="complete_bar" style="background:red;"><div></div></div></div>
+        <div class="progress"><div class="bar bar-danger complete_bar"><div></div></div></div>
         <% when '3' %>
         <span style="color:#CECECE">中止</span>
         </div>
-        <div class="process_bar"><div class="complete_bar" style="background:#CECECE;"><div></div></div></div>
+        <div class="progress"><div class="complete_bar" style="background:#CECECE;"><div></div></div></div>
         <% else %>
       <% end %>
-    <div style="display:none"><%= father.start_time.strftime("%Y-%m-%d")%></div>
-    <div style="display:none"><%= father.end_time.strftime("%Y-%m-%d")%></div>
     <div><%= father.description%></div>
     <% @goals.each do |goal|%>
     <% if goal.father == father.id %>
         <%per = (Time.now-goal.start_time).to_f/(goal.end_time-goal.start_time).to_f%>
-        <div style="font-weight:bold;font-size:10px"><%= goal.title%>&nbsp&nbsp
+        <div class="son"><%= goal.title%>&nbsp&nbsp
+        <div class="time">
+          <div>起始时间:<%=goal.start_time.strftime("%Y-%m-%d")%></div>
+          <div>结束时间:<%=goal.end_time.strftime("%Y-%m-%d")%></div>
+        </div>
         <% case goal.status%>
           <% when '0' %>
             <span style="color:blue">进行中</span>
             </div>
-            <div class="process_bar"><div style="border-radius:8px;background:red;width:<%= per>1 ? 400 : per*400%>px;height:20px"><div></div></div></div>
+            <div class="progress progress-striped active"><div class="bar bar-danger" style="width:<%= per>1 ? 100 : per*100%>%;"><div></div></div></div>
           <% when '1' %>
             <span style="color:#59F378;">已完成</span>
             </div>
-            <div class="process_bar"><div class="complete_bar" style="background:#59F378;"><div></div></div></div>
+            <div class="progress"><div class="bar bar-success complete_bar"><div></div></div></div>
           <% when '2' %>
             <span style="color:red">未达标</span>
             </div>
-            <div class="process_bar"><div class="complete_bar" style="background:red;"><div></div></div></div>
+            <div class="progress"><div class="bar bar-danger complete_bar"><div></div></div></div>
           <% when '3' %>
             <span style="color:#CECECE;">中止</span>
             </div>
-            <div class="process_bar"><div class="complete_bar" style="background:#CECECE;"><div></div></div></div>
+            <div class="progress"><div class="complete_bar" style="background:#CECECE;"><div></div></div></div>
           <% else %>
         <% end %>
-        <div style="display:none"><%= goal.start_time.strftime("%Y-%m-%d")%></div>
-        <div style="display:none"><%= goal.end_time.strftime("%Y-%m-%d")%></div>
         <div><%= goal.description%></div>
       <%end%>
     <%end%>
@@ -73,7 +77,11 @@
 <%end%>
   <div class="donate">
     <h4><span>由于目前网站还未盈利,日常维护支出虽然不多,但也是一份压力,如果您希望帮助我们加快进度,请资助我们吧!</span></h4>
-    <button onclick="window.open('http://me.alipay.com/chancedoor')">捐赠我们</button>
+    <button class="btn btn-primary" onclick="window.open('http://me.alipay.com/chancedoor')">捐赠我们</button>
+  </div>
+  <div class="donate">
+    <h4><span>感谢开源社区给我们带来的莫大帮助:</span></h4>
+    <div><%=link_to 'Devise','http://github.com/plataformatec/devise'%>|<%=link_to 'CanCan','https://github.com/ryanb/cancan'%>|<%=link_to 'Twitter Bootstrap','http://twitter.github.com/bootstrap/'%>|<%=link_to 'active_admin','http://github.com/gregbell/active_adminctiveAdmin.routes(self)'%>...</div>
   </div>
 </div>
 

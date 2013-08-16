@@ -18,14 +18,17 @@ body { padding-top: 60px; }
 }
 
 .navbar .nav li{
-  margin-top: 8px;
-  border-radius: 6px;
-  border: 1px solid #b0a5c7;
   line-height: 10px;
   margin-left:5px;
 }
-
+.navbar .nav>li>a{
+  padding:4px 12px;
+}
+.navbar .nav > li > .btn:hover{
+  background-color:#e7e7e7;
+}
 footer{
   margin-bootom:0px;
   text-align:center;
 }
+

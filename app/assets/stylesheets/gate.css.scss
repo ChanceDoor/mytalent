@@ -18,10 +18,26 @@ h2{
 }
 
 .father{
-  font-weight:bold}
+  position:relative;
+}
+
+.son{
+  position:relative;
+}
+
 .center{
   width:500px;
   margin:0 auto;
+}
+
+.time{
+  background:rgba(207, 248, 250, 0.6);
+  width: 150px;
+  text-align:center;
+  position:absolute;
+  display:none;
+  left:50%;
+  top:40px;
 }
 .process_bar{
   border-radius:8px;
@@ -35,9 +51,7 @@ h2{
   box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
 }
 .complete_bar{
-  border-radius:8px;
-  width:400px;
-  height:20px;
+  width:100% !important;
 }
 .process_bar div{border-radius:8px;}
 
@@ -54,9 +68,6 @@ h2{
 .donate button{
   height: 50px;
   width: 200px;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0046FC), color-stop(1, #3581F1));
-  border-radius: 8px;
-  border: 1px;
   color: #FFFFFF;
   font-size: 18pt;
 }

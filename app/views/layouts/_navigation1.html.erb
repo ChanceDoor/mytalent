@@ -2,25 +2,25 @@
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
-    <%= link_to '登出', destroy_user_session_path, :method=>'delete' %>
+    <%= link_to '登出', destroy_user_session_path, :method=>'delete',:class=>"btn" %>
     </li>
   <% else %>
     <li>
-    <%= link_to '登录', new_user_session_path %>
+    <%= link_to '登录', new_user_session_path,:class=>"btn" %>
     </li>
   <% end %>
   <% if user_signed_in? %>
     <li>
-    <%= link_to '修改账户', edit_user_registration_path %>
+    <%= link_to '修改账户', edit_user_registration_path,:class=>"btn" %>
     </li>
     <% if current_user.has_role? :admin %>
       <li>
-      <%= link_to '管理用户', users_path %>
+      <%= link_to '管理用户', users_path,:class=>"btn" %>
       </li>
     <% end %>
   <% else %>
     <li>
-    <%= link_to '注册', new_user_registration_path %>
+    <%= link_to '注册', new_user_registration_path,:class=>"btn" %>
     </li>
   <% end %>
 </ul>
