@@ -2,14 +2,10 @@
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
-  <%= f.label '名称'%>
-  <%= f.input :name, :autofocus => true %>
-  <%= f.label '邮箱'%>
-  <%= f.input :email, :required => true %>
-  <%= f.label '密码'%>
-  <%= f.input :password, :required => true %>
-  <%= f.label '确认密码'%>
-  <%= f.input :password_confirmation, :required => true %>
+  <%= f.input :name,:label=>'名称', :autofocus => true %>
+  <%= f.input :email,:label=>'邮箱',  :required => true %>
+  <%= f.input :password,:label=>'密码',  :required => true %>
+  <%= f.input :password_confirmation,:label=>'确认密码',  :required => true %>
   <%= f.button :submit, '注册', :class => 'btn-primary' %>
 <% end %>
 <%= render "devise/shared/links" %>
