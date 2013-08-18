@@ -1,9 +1,28 @@
-<div class="center">
-<%if @goals%>
-  <div style="width:200px">  
-  <% @fathers.each do |father|%>
-    <div class="tip">
-    <%per = (Time.now-father.start_time).to_f/(father.end_time-father.start_time).to_f%>
+<div class="tabbable">
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">目标</a></li>
+      <li><a href="#tab2" data-toggle="tab">团体</a></li>
+      <li><a href="#tab3" data-toggle="tab">成就线</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+       <div style="width:25%;float:left">
+         <div style="height:100px">
+           <div class="navbar-search pull-left">
+             <input id="search" type="text" class="search-query" placeholder="搜索目标">
+             <button id="search-btn" class="btn btn-primary btn-small" onclick="window.location.href='<%=s_goals_path%>?title='+$('.search-query').val();"><i class="icon-search icon-white"></i></button>
+           </div>
+         </div>
+         <div style="padding-left:10px"><%= link_to "创建目标",new_user_goal_path(@user)%></div>
+       </div>
+       <div class="center pull-left" style="margin-left:100px">
+        <%if @goals%>
+          <div style="width:200px">  
+          <% @fathers.each do |father|%>
+            <div class="tip">
+            <%per = (Time.now-father.start_time).to_f/(father.end_time-father.start_time).to_f%>
     <% count = 0 %>
     <% complete = 0 %>
     <% @goals.each do |goal| %>
@@ -39,7 +58,7 @@
         <% else %>
       <% end %>
     <div><%= father.description%></div>
-    <div><%= link_to "Edit",edit_user_goal_path(father.user_id,father)%></div><br>
+    <div><%= link_to "修改",edit_user_goal_path(father.user_id,father)%></div><br>
     <% @goals.each do |goal|%>
       <% if goal.father == father.id %>
         <%per = (Time.now-goal.start_time).to_f/(goal.end_time-goal.start_time).to_f%>
@@ -68,12 +87,23 @@
           <% else %>
         <% end %>
         <div><%= goal.description%></div>
-        <div><%= link_to "Edit",edit_user_goal_path(goal.user_id,goal)%></div><br>
+        <div><%= link_to "修改",edit_user_goal_path(goal.user_id,goal)%></div><br>
       <%end%>
     <%end%>
    
     </div>
   <% end %>
   </div>
+<%else%>
+  <p>你还没有建立目标,赶紧添加自己的第一个目标吧!</p>  
 <%end%>
-  <%= link_to "New Goal",new_user_goal_path(@user)%>
+    </div>
+   </div>
+   <div class="tab-pane" id="tab2">
+      <p>尚未完工</p>
+   </div>
+   <div class="tab-pane" id="tab3">
+      <p>尚未完工</p>
+   </div>
+  </div>
+</div>

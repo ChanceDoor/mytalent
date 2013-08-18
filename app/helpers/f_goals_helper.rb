@@ -1,0 +1,2 @@
+module FGoalsHelper
+end

@@ -1,4 +1,10 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  resources :f_goals
+
+
+  resources :s_goals
+
+
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   authenticated :user do

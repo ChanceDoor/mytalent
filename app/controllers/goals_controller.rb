@@ -3,6 +3,8 @@ class GoalsController < ApplicationController
   before_filter :authenticate_user!
   def create
     @user = current_user
+    p '=========='
+    p params[:goal]
     @goal = @user.goals.new(params[:goal])
     respond_to do |format|
       if @goal.save

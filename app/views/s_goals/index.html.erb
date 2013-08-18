@@ -1,0 +1,73 @@
+<div class="center">
+   <div style="text-align:center;background-color: #dff0d8;border: 1px solid #d6e9c6;border-radius: 4px;">没有找到令你满意的目标?&nbsp&nbsp帮助我们完善吧&nbsp&nbsp<a class="btn btn-success" style="margin:10px" data-toggle="modal" href="#add"><i class="icon-plus icon-white"></i></a>
+   </div>
+
+   <div id="add" class="modal hide fade">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3>添加公共目标</h3>
+        </div>
+        <div class="modal-body">
+          <%=form_tag('/f_goals') do %>
+            <%=label_tag '名称'%>
+            <%=text_field_tag :title %>
+  
+            <%=label_tag '所需时间'%>
+            <%=text_field_tag :days %>天
+    
+            <%=label_tag '难度'%>
+            <%=text_field_tag :degree %>
+          
+            <%=label_tag '内容'%>
+            <%=text_area_tag :description %>
+        </div>
+        <div class="modal-footer">
+          <%=submit_tag "保存",class:"btn btn-primary", data: { confirm: "Are you sure?" }%>
+          <% end %>
+          <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+        </div>
+      </div>   
+
+    <% i=0 %>
+    <div style="width:600px">  
+    <% @goals.each do |goal|%>
+      <% i=i+1 %>
+      <div class="tip" style="cursor:pointer;width:79%" data-toggle="modal" data-target="#<%=i%>" >
+        <div class="father">
+            <div><%= goal.title%></div>
+            <div>所需时间:<%= goal.days%>天</div>
+            <div style="float:right">
+              <%if goal.class.name=="FGoal"%>
+                创建者:<%=goal.creater%> 
+              <%else%>
+                官方 
+              <%end%>
+            </div>
+        </div>
+      </div>
+      <div style="float:left">
+        <%=form_tag('/users/'+current_user.id.to_s+'/goals') do %>
+          <%=hidden_field_tag 'goal[title]', goal.title%>         
+          <%=hidden_field_tag 'goal[description]', goal.description%>
+          <%=hidden_field_tag 'goal[start_time]', Time.now%>
+          <%=hidden_field_tag 'goal[end_time]', Time.now + goal.days.day%>
+          <%=hidden_field_tag 'goal[weight]', 0%>
+          <%=hidden_field_tag 'goal[status]', 0%>
+          <%=hidden_field_tag 'goal[father]', 0%>
+          <%=submit_tag "选择该目标",class:"btn btn-success", data: { confirm: "确定选择该目标?" }%>
+        <% end %>
+      </div>
+      <div id="<%=i%>" class="modal hide fade">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3><%= goal.title%></h3>
+        </div>
+        <div class="modal-body">
+          <p><%=goal.description%></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+        </div>
+      </div>
+    <% end %>
+</div>
