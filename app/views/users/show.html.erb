@@ -1,3 +1,11 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
+<h3><p><%= @user.name %></p></h3>
 <p>Email: <%= @user.email if @user.email %></p>
+<p>所加团队: 
+  <% if @teams.first != nil %>
+    <% @teams.each do |team|%>
+      <%=link_to team.name,team_path(team) %>
+    <%end%>
+  <% else %>
+    无
+  <% end %>
+</p>

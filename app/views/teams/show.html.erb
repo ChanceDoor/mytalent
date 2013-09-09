@@ -1,0 +1,5 @@
+<h3><%= @team.name%></h3><br/>
+类别：<%= @team.category %><br />
+创建者：<%=link_to @creator.name , user_path(@creator)%><br />
+介绍：<%= @team.description %><br/>
+

@@ -17,12 +17,12 @@ body { padding-top: 60px; }
   float:right;
 }
 
-.navbar .nav li{
+.nav-li{
   line-height: 10px;
   margin-left:5px;
 }
-.navbar .nav>li>a{
-  padding:4px 12px;
+.nav-a{
+  padding:4px 12px !important;
 }
 .navbar .nav > li > .btn:hover{
   background-color:#e7e7e7;

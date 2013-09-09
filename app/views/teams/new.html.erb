@@ -1,0 +1,17 @@
+<%= form_for [current_user,@team]  do |f| %>
+  <div class="field" style="width:220px">
+    <%= f.label "名称" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field" style="width:220px">
+    <%= f.label "类别" %>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field" style="width:220px">
+    <%= f.label "内容描述" %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit "提交"%>
+  </div>
+<% end %>

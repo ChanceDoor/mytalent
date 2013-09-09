@@ -97,13 +97,24 @@
 <%else%>
   <p>你还没有建立目标,赶紧添加自己的第一个目标吧!</p>  
 <%end%>
-    </div>
-   </div>
+</div>
+</div>
    <div class="tab-pane" id="tab2">
-      <p>尚未完工</p>
+     <div style="width:25%;float:left">
+       <div style="padding-left:10px"><%= link_to "创建团体",new_user_team_path(@user) %></div>
+     </div>
+     <div class="center pull-left" style="margin-left:100px">
+       <% if @teams.first != nil %>
+	 <% @teams.each do |t| %>
+	   <%= link_to t.name,team_path(t) %><br />
+         <% end %>  
+       <% else %>
+         你没有加入任何团体
+       <% end %>
+     </div>
    </div>
    <div class="tab-pane" id="tab3">
-      <p>尚未完工</p>
+     <p>尚未完工</p>
    </div>
-  </div>
+ </div>
 </div>

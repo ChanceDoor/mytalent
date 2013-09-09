@@ -63,7 +63,7 @@
           <h3><%= goal.title%></h3>
         </div>
         <div class="modal-body">
-          <p><%=goal.description%></p>
+          <p><%= raw(goal.description) %></p>
         </div>
         <div class="modal-footer">
           <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>

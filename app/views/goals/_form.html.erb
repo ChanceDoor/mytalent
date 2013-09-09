@@ -1,11 +1,11 @@
-<%= form_for([@user,@goal]) do |f| %>
+<%= form_for [@user,@goal], :html => {:mutipart => true } do |f| %>
   <div class="field" style="width:220px">
     <%= f.label "标题" %>
     <%= f.text_field :title %>
   </div>
-  <div class="field" style="width:220px">
+  <div class="field">
     <%= f.label "内容描述" %>
-    <%= f.text_area :description,:rows=>"10"%>
+    <%= f.kindeditor :description %>
   </div>
   <div class="field" style="width:220px">
     <%= f.label "开始于" %>
